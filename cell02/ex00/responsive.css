@@ -1,0 +1,18 @@
+
+.float-container {
+	display:flex;
+}
+.float-child1 {
+height: 700px;
+    width: 50%;
+    float: left;
+text-align: center;
+background-color: blue;
+}  
+.float-child2 {
+height: 700px;
+    width: 50%;
+    float: left;
+text-align: center;
+background-color: gold;
+}  
