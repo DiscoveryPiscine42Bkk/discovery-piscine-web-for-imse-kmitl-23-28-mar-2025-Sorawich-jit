@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator</title>
+</head>
+<body>
+    <h2>Basic Calculator</h2>
+    <form onsubmit="calculate(event)"> <!-- สร้างฟอร์มสำหรับการใช้รับค่า -->
+        <input type="number" id="leftOperand" min="0" required>
+        <select id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </select>
+        <input type="number" id="rightOperand" min="0" required>
+        <input type="submit" value="Try me!">
+    </form>
+
+    <script>
+        function calculate(event) {
+            event.preventDefault();
+            
+            let left = +document.getElementById("leftOperand").value;
+            let operator = document.getElementById("operator").value;
+            let right = +document.getElementById("rightOperand").value;
+
+            // ตรวจสอบข้อผิดพลาดกรณีที่หารแล้วค่าด้านขว่าต่ำกว่า0
+            if (left < 0 || right < 0) return alert("Error :(");
+            if ((operator === "/" || operator === "%") && right === 0) return alert("It’s over 9000!");
+
+            // คำนวณผลลัพธ์
+            let result;
+            switch (operator) {
+                case "+": result = left + right; break;
+                case "-": result = left - right; break;
+                case "*": result = left * right; break;
+                case "/": result = left / right; break;
+                case "%": result = left % right; break;
+            }
+
+            // แสดงผลลัพธ์
+            alert(`Result: ${result}`);
+            console.log(`Result: ${result}`);
+        }
+
+        // แสดงข้อความ alert ทุกๆ 30 วินาที(30000ms)
+        setInterval(() => alert("Please, use me..."), 30000);
+    </script>
+</body>
+</html>
